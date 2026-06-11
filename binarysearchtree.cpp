@@ -4,7 +4,7 @@ using namespace std;
 
 class Node
 {
-    public:
+public:
     string info;
     Node *leftchild;
     Node *rightchild;
@@ -20,8 +20,31 @@ class Node
 
 class BinaryTree
 {
-    public:
+public:
     Node *ROOT;
+
+    BinaryTree()
+    {
+        ROOT = NULL; // Initializing ROOT to null
+    }
+
+    // This function searches the current node of the specified node
+    // as well as the current node of its parent
+    void search(string element, Node* &parent, Node *&currentNode)
+    {
+        currentNode = ROOT;
+        parent = NULL;
+
+        while ((currentNode != NULL) && (currentNode->info != element))
+        {
+            parent = currentNode;
+
+            if (element < currentNode->info)
+                currentNode = currentNode->leftchild;
+            else
+                currentNode = currentNode->rightchild;
+        }
+    }
 
     // Insert a node in the binary search tree
     void insert(string element)
@@ -42,15 +65,6 @@ class BinaryTree
             ROOT = newNode;
             return;
         }
-    }
-
-search(element, parent, currentNode);
-
-        if (parent == NULL)
-        {
-            ROOT = newNode;
-            return;
-        }
 
         if (element < parent->info)
         {
@@ -59,25 +73,6 @@ search(element, parent, currentNode);
         else if (element > parent->info)
         {
             parent->rightchild = newNode;
-        }
-    }
-
-    // This function searches the current node of the specified node
-    // as well as the current node of its parent
-    
-    void search(string element, Node *&parent, Node *&currentNode)
-    {
-        currentNode = ROOT;
-        parent = NULL;
-
-        while ((currentNode != NULL) && (currentNode->info != element))
-        {
-            parent = currentNode;
-
-            if (element < currentNode->info)
-                currentNode = currentNode->leftchild;
-            else
-                currentNode = currentNode->rightchild;
         }
     }
 
@@ -105,7 +100,7 @@ search(element, parent, currentNode);
             return;
         }
 
-        if (ptr != NULL)
+        if (ptr != NULL) // Perbaikan: Sebelumnya menggunakan kurung kurawal {ptr != NULL} yang salah
         {
             cout << ptr->info << " ";
             preorder(ptr->leftchild);
@@ -116,7 +111,6 @@ search(element, parent, currentNode);
     void postorder(Node *ptr)
     {
         // Performs the postorder traversal of the tree
-
         if (ROOT == NULL)
         {
             cout << "Tree is empty" << endl;
@@ -136,19 +130,18 @@ int main()
 {
     BinaryTree obj;
 
-    while (true)
+    while(true)
     {
-        cout << "\nMenu" << endl;
         cout << "1. Implement insert operation" << endl;
         cout << "2. Perform inorder traversal" << endl;
         cout << "3. Perform preorder traversal" << endl;
-        cout << "4. Perform postorder traversal" << endl;
+        cout << "4.Perform postorder traversal" << endl;
         cout << "5. Exit" << endl;
         cout << "\nEnter your choice (1-5): ";
 
         char ch;
         cin >> ch;
-
+        
         cout << endl;
 
         switch (ch)
@@ -193,4 +186,3 @@ int main()
     return 0;
 
 }
-
