@@ -23,3 +23,6 @@ class BinaryTree
     public:
     Node *ROOT;
     
+    // Insert a node in the binary search tree
+    void insert(string element)
+    {
