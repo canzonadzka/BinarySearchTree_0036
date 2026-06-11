@@ -97,5 +97,6 @@ search(element, parent, currentNode);
         }
     }
 
+    void preorder(Node *ptr)
     
 
