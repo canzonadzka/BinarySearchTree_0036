@@ -64,6 +64,7 @@ search(element, parent, currentNode);
 
     // This function searches the current node of the specified node
     // as well as the current node of its parent
+    
     void search(string element, Node *&parent, Node *&currentNode)
     {
         currentNode = ROOT;
@@ -79,3 +80,22 @@ search(element, parent, currentNode);
                 currentNode = currentNode->rightchild;
         }
     }
+
+    void inorder(Node *ptr)
+    {
+        if (ROOT == NULL)
+        {
+            cout << "Tree is empty" << endl;
+            return;
+        }
+
+        if (ptr != NULL)
+        {
+            inorder(ptr->leftchild);
+            cout << ptr->info << " ";
+            inorder(ptr->rightchild);
+        }
+    }
+
+    
+
