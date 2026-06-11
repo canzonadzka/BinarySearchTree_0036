@@ -31,3 +31,15 @@ class BinaryTree
         newNode->info = element;
         newNode->leftchild = NULL;
         newNode->rightchild = NULL;
+
+        Node *parent = NULL;
+        Node *currentNode = NULL;
+
+        search(element, parent, currentNode);
+
+        if (parent == NULL)
+        {
+            ROOT = newNode;
+            return;
+        }
+    }
